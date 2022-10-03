@@ -1,4 +1,5 @@
-CREATE TABLE marvels (ID INTEGER PRIMARY KEY,
+CREATE TABLE marvels (
+    ID INTEGER PRIMARY KEY,
     name TEXT,
     popularity INTEGER,
     alignment TEXT,
