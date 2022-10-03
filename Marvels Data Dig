@@ -41,12 +41,17 @@ INSERT INTO marvels VALUES(24, "Venom", 78, "Neutral", "Male", 1.90, 118, "USA",
 INSERT INTO marvels VALUES(25, "Juggernaut", 76, "Neutral", "Male", 2.87, 862, "USA", 2, 7, 2, 7, 1, 4);
 INSERT INTO marvels VALUES(26, "Professor X", 58, "Good", "Male", 1.83, 86, "USA", 5, 2, 2, 2, 5, 3);
 
--- what are the average, max, and min values in the data? --
+/* what are the average, max, and min values in the data? */
+
+-- popularity --
+
 SELECT
     ROUND(AVG(popularity),2) AS avg_popularity,
     MIN(popularity) AS min_popularity,
     MAX(popularity) AS max_popularity
 FROM marvels;
+
+-- height --
 
 SELECT
     ROUND(AVG(height_m),2) AS avg_height_m,
@@ -54,11 +59,15 @@ SELECT
     MIN(height_m) AS min_height_m
 FROM marvels;
 
+-- weight --
+
 SELECT
     ROUND(AVG(weight_kg),2) AS avg_weight_kg,
     MAX(weight_kg) AS max_weight_kg,
     MIN(weight_kg) AS min_weight_kg
 FROM marvels;
+
+-- intelligence --
 
 SELECT
     ROUND(AVG(intelligence),2) AS avg_intelligence,
@@ -66,11 +75,15 @@ SELECT
     MIN(intelligence) AS min_intelligence
 FROM marvels;
 
+-- strength --
+
 SELECT
     ROUND(AVG(strength),2) AS avg_strength,
     MAX(strength) AS max_strength,
     MIN(strength) AS min_strength
 FROM marvels;
+
+-- speed --
 
 SELECT
     ROUND(AVG(speed),2) AS avg_speed,
@@ -78,15 +91,18 @@ SELECT
     MIN(speed) AS min_speed
 FROM marvels;
 
+-- fighting skills -
+
 SELECT
     ROUND(AVG(fighting_skills),2) AS avg_fighting_skills,
     MAX(fighting_skills) AS max_fighting_skills,
     MIN(fighting_skills) AS min_fighting_skills
 FROM marvels;
 
--- what are the average values (per gender) in the data? --
+/* what are the average values (per gender) in the data? */
 
-/* popularity */
+-- popularity --
+
 SELECT
     ROUND(AVG(popularity),2) AS avg_popularity_female
 FROM marvels
@@ -99,7 +115,9 @@ FROM marvels
 GROUP BY gender
 HAVING gender = 'Male';
 
-/* height */
+
+-- height --
+
 SELECT
     ROUND(AVG(height_m),2) AS avg_height_female
 FROM marvels
@@ -112,14 +130,24 @@ FROM marvels
 GROUP BY gender
 HAVING gender = 'Male';
 
-/* weight */
+
+-- weight --
+
 SELECT
     ROUND(AVG(weight_kg),2) AS avg_weight_female
 FROM marvels
 GROUP BY gender
 HAVING gender = 'Female';
 
-/* intelligence */
+SELECT
+    ROUND(AVG(weight_kg),2) AS avg_weight_male
+FROM marvels
+GROUP BY gender
+HAVING gender = 'Male';
+
+
+-- intelligence --
+
 SELECT
     ROUND(AVG(intelligence),2) AS avg_intelligence_female
 FROM marvels
@@ -132,7 +160,9 @@ FROM marvels
 GROUP BY gender
 HAVING gender = 'Male';
 
-/* strength */
+
+-- strength --
+
 SELECT
     ROUND(AVG(strength),2) AS avg_strength_female
 FROM marvels
@@ -145,7 +175,9 @@ FROM marvels
 GROUP BY gender
 HAVING gender = 'Male';
 
-/* speed */
+
+-- speed --
+
 SELECT
     ROUND(AVG(speed),2) AS avg_speed_female
 FROM marvels
@@ -158,7 +190,9 @@ FROM marvels
 GROUP BY gender
 HAVING gender = 'Male';
 
-/* fighting skills */
+
+-- fighting skills --
+
 SELECT
     ROUND(AVG(fighting_skills),2) AS avg_fighting_skills_female
 FROM marvels
@@ -171,9 +205,12 @@ FROM marvels
 GROUP BY gender
 HAVING gender = 'Male';
 
--- what ways are there to group the data values that don't exist yet using CASE? --
 
-/* potential for good */
+/* what ways are there to group the data values that don't exist yet using CASE? */
+
+
+-- potential for good --
+
 SELECT
     name,
     CASE
@@ -184,7 +221,9 @@ SELECT
 FROM marvels
 ORDER BY "potential for good";
 
-/* strength categories */
+
+-- strength categories --
+
 SELECT
     name,
     CASE
@@ -195,7 +234,9 @@ SELECT
 FROM marvels
 ORDER BY strength DESC;
 
-/* popularity categories */
+
+-- popularity categories --
+
 SELECT
     name,
     CASE
@@ -207,9 +248,9 @@ FROM marvels
 ORDER BY popularity ASC;
 
 
--- what interesting ways are there to filter the data? --
+/* what interesting ways are there to filter the data? */
 
-/* what is the average weight of a "good" superhero, by hometown */
+-- what is the average weight of a "good" superhero, by hometown? --
 
 SELECT
     hometown,
@@ -220,7 +261,7 @@ HAVING alignment = 'Good'
 ORDER BY avg_weight_good DESC;
 
 
-/* which male superheroes have above average popularity? */
+-- which male superheroes have above average popularity? --
 
 SELECT
     name,
@@ -232,7 +273,8 @@ WHERE popularity < (
     WHERE gender = 'Male')
 ORDER BY above_avg_popularity_male ASC;
 
-/* which superheroes from the United States are the "most popular"? */
+
+-- which superheroes from the United States are the "most popular"? --
 
 SELECT
     name,
@@ -241,14 +283,16 @@ FROM marvels
 WHERE hometown = 'USA' AND popularity < 20
 ORDER BY popularity;
 
-/* which "bad" superheroes are from the USA? */
+
+-- which "bad" superheroes are from the USA? --
 
 SELECT
     name
 FROM marvels
 WHERE alignment = 'Bad' AND hometown = 'USA';
 
-/* which superheroes are either stronger than average or faster than average? */
+
+-- which superheroes are either stronger than average or faster than average? --
 
 SELECT
     name
