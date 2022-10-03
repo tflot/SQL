@@ -41,6 +41,7 @@ INSERT INTO marvels VALUES(24, "Venom", 78, "Neutral", "Male", 1.90, 118, "USA",
 INSERT INTO marvels VALUES(25, "Juggernaut", 76, "Neutral", "Male", 2.87, 862, "USA", 2, 7, 2, 7, 1, 4);
 INSERT INTO marvels VALUES(26, "Professor X", 58, "Good", "Male", 1.83, 86, "USA", 5, 2, 2, 2, 5, 3);
 
+
 /* what are the average, max, and min values in the data? */
 
 -- popularity --
@@ -98,6 +99,7 @@ SELECT
     MAX(fighting_skills) AS max_fighting_skills,
     MIN(fighting_skills) AS min_fighting_skills
 FROM marvels;
+
 
 /* what are the average values (per gender) in the data? */
 
@@ -201,7 +203,6 @@ HAVING gender = 'Male';
 
 
 /* what ways are there to group the data values that don't exist yet using CASE? */
-
 
 -- potential for good --
 
