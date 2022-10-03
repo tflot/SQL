@@ -115,7 +115,6 @@ FROM marvels
 GROUP BY gender
 HAVING gender = 'Male';
 
-
 -- height --
 
 SELECT
@@ -129,7 +128,6 @@ SELECT
 FROM marvels
 GROUP BY gender
 HAVING gender = 'Male';
-
 
 -- weight --
 
@@ -145,7 +143,6 @@ FROM marvels
 GROUP BY gender
 HAVING gender = 'Male';
 
-
 -- intelligence --
 
 SELECT
@@ -159,7 +156,6 @@ SELECT
 FROM marvels
 GROUP BY gender
 HAVING gender = 'Male';
-
 
 -- strength --
 
@@ -175,7 +171,6 @@ FROM marvels
 GROUP BY gender
 HAVING gender = 'Male';
 
-
 -- speed --
 
 SELECT
@@ -189,7 +184,6 @@ SELECT
 FROM marvels
 GROUP BY gender
 HAVING gender = 'Male';
-
 
 -- fighting skills --
 
@@ -221,7 +215,6 @@ SELECT
 FROM marvels
 ORDER BY "potential for good";
 
-
 -- strength categories --
 
 SELECT
@@ -233,7 +226,6 @@ SELECT
         END AS "strength meter"
 FROM marvels
 ORDER BY strength DESC;
-
 
 -- popularity categories --
 
@@ -260,7 +252,6 @@ GROUP BY hometown
 HAVING alignment = 'Good'
 ORDER BY avg_weight_good DESC;
 
-
 -- which male superheroes have above average popularity? --
 
 SELECT
@@ -273,7 +264,6 @@ WHERE popularity < (
     WHERE gender = 'Male')
 ORDER BY above_avg_popularity_male ASC;
 
-
 -- which superheroes from the United States are the "most popular"? --
 
 SELECT
@@ -283,14 +273,12 @@ FROM marvels
 WHERE hometown = 'USA' AND popularity < 20
 ORDER BY popularity;
 
-
 -- which "bad" superheroes are from the USA? --
 
 SELECT
     name
 FROM marvels
 WHERE alignment = 'Bad' AND hometown = 'USA';
-
 
 -- which superheroes are either stronger than average or faster than average? --
 
