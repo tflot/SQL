@@ -209,8 +209,14 @@ HAVING gender = 'Male';
 SELECT
     name,
     CASE
-        WHEN alignment = 'Good'AND intelligence >= 3.62 THEN "high"
-        WHEN alignment = 'Bad' AND intelligence >= 3.62 THEN "low"
+        WHEN alignment = 'Good'AND intelligence >= (
+            SELECT AVG(intelligence)
+            FROM marvels)
+        THEN "high"
+        WHEN alignment = 'Bad' AND intelligence >= (
+            SELECT AVG(intelligence)
+            FROM marvels)
+        THEN "low"
         ELSE "neutral"
         END AS "potential for good"
 FROM marvels
