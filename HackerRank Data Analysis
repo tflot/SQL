@@ -52,7 +52,7 @@ SELECT
 FROM city
 WHERE countrycode = 'JPN';
 
-#Next, analyzed a new table Station. For problem 1, I used SQL to query a list of cities and states from the Station table
+#Next, I analyzed a new table Station. For problem 1, I used SQL to query a list of cities and states from the Station table
 
 CREATE TABLE station (
     id INTEGER,
@@ -162,7 +162,30 @@ AND (
     city NOT LIKE '%u'
     );
 
+#Next, I analyzed a new table Employee and queried the data to print a list of employee names in alphabetical order.
 
+CREATE TABLE employee (
+    employee_id INTEGER,
+    name STRING,
+    months INTEGER,
+    salary INTEGER);
+
+SELECT
+    name
+FROM employee
+ORDER BY name;
+
+#For problem 2, I wrote a query that printed a list of employee names for employees having a salary greater than $2000 per month who have been employees
+for less than 10 months. I sorted my results by employee_id.
+
+SELECT
+    name
+FROM employee
+WHERE salary > 2000
+AND months < 10
+ORDER BY employee_id ASC;
+
+#
 
 
 
