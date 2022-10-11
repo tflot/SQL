@@ -1,0 +1,171 @@
+#For this project, I used SQL to query multiple tables and sets of data provided to me by HackerRank.
+
+#In problem #1, I needed to query all columns from the City table to determine which cities in the USA had populations larger than 100000.
+
+CREATE TABLE city (
+    id INTEGER,
+    name VARCHAR(17),
+    countrycode VARCHAR(3),
+    district VARCHAR(20),
+    population INTEGER
+    )
+
+SELECT *
+FROM city
+WHERE population > 100000
+AND countrycode = 'USA';
+
+#In problem 2, I used the city table to query the name field for all American cities with populations larger than 120000.
+
+SELECT
+    name
+FROM city
+WHERE population > 120000
+AND countrycode = 'USA';
+
+#For problem 3, I queried all attributes for every row in the city table.
+
+SELECT
+    id,
+    name,
+    countrycode,
+    district,
+    population
+FROM city;
+
+#For problem 4, I queried all columns for a city in the City table with the ID 1661.
+
+SELECT *
+FROM city
+WHERE ID = 1661;
+
+#For problem 5 I queried all attributes of every Japaneses city in the City table.
+
+SELECT *
+FROM city
+WHERE countrycode = 'JPN'
+
+#For problem 6, I queried the names of all the Japanese cities in the City table.
+
+SELECT
+    name
+FROM city
+WHERE countrycode = 'JPN';
+
+#Next, analyzed a new table Station. For problem 1, I used SQL to query a list of cities and states from the Station table
+
+CREATE TABLE station (
+    id INTEGER,
+    city VARCHAR(21),
+    state VARCHAR(2),
+    lat_n INTEGER,
+    long_w INTEGER
+    )
+
+SELECT
+    city,
+    state
+FROM station;
+
+#For problem 2, I queried a list of city names from Station for cities that have an even ID number.
+
+SELECT
+   DISTINCT city
+FROM station
+WHERE mod(ID,2) = 0;
+
+#For problem 3, I found the difference between the total number of city entries and the number of distinct city entries in the Station table.
+
+SELECT
+    COUNT(city)-COUNT(DISTINCT city)
+FROM station;
+
+#For problem 4, I queried the two cities in the Station table with the shortest and longest city names, as well as their respective lenghts (ie. number
+of characters in the name). Since there may be more than one small or largest length city name, I chose the one that comes first when ordered
+alphabetically.
+
+SELECT
+    city,
+    length(city)
+FROM station
+ORDER BY length(city), city ASC
+LIMIT 1;
+
+SELECT
+    city,
+    length(city)
+FROM station
+ORDER BY length(city) DESC, city ASC
+LIMIT 1;
+
+#For problem 5, I queried the list of city names from the Station table that begin with vowels.
+
+SELECT
+    DISTINCT city
+FROM station
+WHERE
+    city LIKE 'a%' OR
+    city LIKE 'e%' OR
+    city LIKE 'i%' OR
+    city LIKE 'o%' OR
+    city LIKE 'u%';
+    
+#For problem 6, I queried the list of city names from the Station table that do not end with vowels.
+
+SELECT
+    DISTINCT city
+FROM station
+WHERE
+    city NOT LIKE '%a' AND
+    city NOT LIKE '%e' AND
+    city NOT LIKE '%i' AND
+    city NOT LIKE '%o' AND
+    city NOT LIKE '%u';
+    
+#For problem 7, I queried the list of city names from Station that either do not start with vowels or do not end with vowels.
+
+SELECT
+    DISTINCT city
+FROM station
+WHERE (
+    city NOT LIKE 'a%' AND
+    city NOT LIKE 'e%' AND
+    city NOT LIKE 'i%' AND
+    city NOT LIKE 'o%' AND
+    city NOT LIKE 'u%'
+    )
+OR (
+    city NOT LIKE '%a' AND
+    city NOT LIKE '%e' AND
+    city NOT LIKE '%i' AND
+    city NOT LIKE '%o' AND
+    city NOT LIKE '%u'
+    );
+
+#For problem 8, I queried the list of city names from Station that do not start with vowels and do not end with vowels.
+
+SELECT
+    DISTINCT city
+FROM station
+WHERE (
+    city NOT LIKE 'a%' AND
+    city NOT LIKE 'e%' AND
+    city NOT LIKE 'i%' AND
+    city NOT LIKE 'o%' AND
+    city NOT LIKE 'u%'
+    )
+AND (
+    city NOT LIKE '%a' AND
+    city NOT LIKE '%e' AND
+    city NOT LIKE '%i' AND
+    city NOT LIKE '%o' AND
+    city NOT LIKE '%u'
+    );
+
+
+
+
+
+
+
+
