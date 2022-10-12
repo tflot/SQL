@@ -52,6 +52,50 @@ SELECT
 FROM city
 WHERE countrycode = 'JPN';
 
+#For problem 7, I counted the number cities having a population larger than 100000.
+
+SELECT
+    COUNT(population)
+FROM city
+WHERE population > 100000;
+
+#For problem 8, I found the total population of all cities where the district is California.
+
+SELECT
+    SUM(population)
+FROM city
+WHERE district = 'California';
+
+#For problem 9, I found the average population of all cities where the district is California.
+
+SELECT
+    AVG(population)
+FROM city
+WHERE district = 'California';
+
+#For problem 10, I found the average population for all cities, rounded down to the nearest integer.
+
+SELECT
+    ROUND(AVG(population),0)
+FROM city;
+
+#For problem 11, I found the sum of the populations for all Japanese cities.
+
+SELECT
+    SUM(population)
+FROM city
+WHERE countrycode = 'JPN';
+
+#For problem 12, I found the difference between the maximum and minimum populations.
+
+SELECT
+    MAX(population) - MIN(population)
+FROM city;
+
+# START HERE BESTIEEEEEE
+
+
+
 #Next, I analyzed a new table Station. For problem 1, I used SQL to query a list of cities and states from the Station table
 
 CREATE TABLE station (
@@ -161,6 +205,7 @@ AND (
     city NOT LIKE '%o' AND
     city NOT LIKE '%u'
     );
+   
 
 #Next, I analyzed a new table Employee and queried the data to print a list of employee names in alphabetical order.
 
@@ -185,7 +230,6 @@ WHERE salary > 2000
 AND months < 10
 ORDER BY employee_id ASC;
 
-#
 
 
 
