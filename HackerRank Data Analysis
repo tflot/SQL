@@ -230,7 +230,18 @@ WHERE salary > 2000
 AND months < 10
 ORDER BY employee_id ASC;
 
+#For problem 3, I wrote a query that found the maximum total earnings for all employees as we as the total number of employees who have maximum total earnings
+(where an employee's total earnings are defined by their monthly salary multipled by months worked).
 
+SELECT
+    MAX(salary*months),
+    COUNT(*)
+FROM employee
+WHERE (salary*months) >= (
+    SELECT
+        MAX(salary*months)
+    FROM employee);
+       
 
 
 
