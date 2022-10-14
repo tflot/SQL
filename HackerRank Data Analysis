@@ -248,6 +248,18 @@ SELECT
 FROM station
 WHERE lat_n > 38.7780;
 
+#For problem 14, I queried the western longitude (LONG_W) where the smallest northern latitude (LAT_N) in Station is greater than 38.7780, rounded to four
+decimal places.
+
+SELECT
+    ROUND(long_w,4)
+FROM station
+WHERE lat_n = (
+    SELECT
+        MIN(lat_n)
+    FROM station
+    WHERE lat_n > 38.7780);
+
 
 #Next, I analyzed a new table Employee and queried the data to print a list of employee names in alphabetical order.
 
