@@ -33,7 +33,7 @@ SELECT
     population
 FROM city;
 
-#For problem 4, I queried all columns for a city in the City table with the ID 1661.
+#For problem 4, I queried all columns for a city in the CITY table with the ID 1661.
 
 SELECT *
 FROM city
