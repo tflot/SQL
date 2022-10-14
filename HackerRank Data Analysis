@@ -137,6 +137,17 @@ JOIN country c2
 ON c1.countrycode = c2.code
 WHERE c2.continent = 'Africa';
 
+#For problem 15, I queried the names of all the continents (COUNTRY.continent) and their respective average city populations (CITY.population) rounded
+down to the nearest integer.
+
+SELECT
+    c2.continent,
+    FLOOR(AVG(c1.population))
+FROM city c1
+JOIN country c2
+ON c1.countrycode = c2.code
+GROUP BY c2.continent;
+
 
 #Next, I analyzed a new table STATION. For problem 1, I used SQL to query a list of cities and states from the Station table
 
