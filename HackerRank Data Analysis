@@ -128,6 +128,15 @@ JOIN country c2
 ON c1.countrycode = c2.code
 WHERE c2.continent = 'Asia';
 
+#For problem 14, I queried the CITY and COUNTRY tables by finding the names of all cities where the continent is 'Africa'.
+
+SELECT
+    c1.name
+FROM city c1
+JOIN country c2
+ON c1.countrycode = c2.code
+WHERE c2.continent = 'Africa';
+
 
 #Next, I analyzed a new table STATION. For problem 1, I used SQL to query a list of cities and states from the Station table
 
