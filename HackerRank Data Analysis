@@ -209,8 +209,8 @@ AND (
 #For problem 9, I found the sum of all latitude values and all longitude values, rounded totwo decimal places.
 
 SELECT
-    ROUND(SUM(LAT_N),2) AS lat,
-    ROUND(SUM(LONG_W),2) AS lon
+    ROUND(SUM(lat_n),2) AS lat,
+    ROUND(SUM(long_w),2) AS lon
 FROM station;
 
 #For problem 10, I queried the sum of northern latitudes (LAT_N) from Station having values greater than 38.7880 and less than 137.2345, rounded to
