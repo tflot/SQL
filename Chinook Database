@@ -149,4 +149,16 @@ JOIN chinook.employees e
 ON c.supportrepid = e.employeeid
 GROUP BY e.employeeid;
 
+/* Which sales agent made the most dollars in sales in 2009? */
 
+SELECT
+    e.firstname,
+    e.lastname,
+    SUM(i.total)
+FROM chinook.invoices i
+LEFT JOIN chinook.customers c
+USING (customerid)
+JOIN chinook.employees e
+ON c.supportrepid = e.employeeid
+WHERE i.invoicedate BETWEEN '2009-01-01' AND '2009-12-31'
+GROUP BY e.employeeid;
