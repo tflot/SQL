@@ -121,4 +121,17 @@ USING (albumid)
 JOIN chinook.artists a
 USING (artistid);
 
+/* Provide a query that shows all the Tracks, and include the Album name, Media type, and Genre. */
 
+SELECT
+    t.name AS track_name,
+    a.title AS album_title,
+    g.name AS genre,
+    m.name AS media_type
+FROM chinook.tracks t
+LEFT JOIN chinook.albums a
+USING (albumid)
+JOIN chinook.genres g
+USING (genreid)
+JOIN chinook.media_types m
+USING (mediatypeid);
