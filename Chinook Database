@@ -194,3 +194,27 @@ JOIN chinook.employees e
 ON c.supportrepid = e.employeeid
 WHERE i.invoicedate BETWEEN '2009-10-01' AND '2009-12-31'
 GROUP BY e.employeeid;
+
+/* What are the total sales for the first quarter of 2009? */
+
+SELECT
+    SUM(total) AS total_sales
+FROM chinook.invoices
+WHERE invoiceid IN (
+    SELECT
+        invoiceid
+    FROM chinook.invoices
+    WHERE invoicedate BETWEEN '2009-01-01' AND '2009-03-31'
+    );
+    
+/* What are the total sales for the last quarter of 2009? */
+
+SELECT
+    SUM(total) AS total_sales
+FROM chinook.invoices
+WHERE invoiceid IN (
+    SELECT
+        invoiceid
+    FROM chinook.invoices
+    WHERE invoicedate BETWEEN '2009-10-01' AND '2009-12-31'
+    );
