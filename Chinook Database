@@ -135,3 +135,18 @@ JOIN chinook.genres g
 USING (genreid)
 JOIN chinook.media_types m
 USING (mediatypeid);
+
+/* Show the total sales made by each sales agent. */
+
+SELECT
+    e.firstname,
+    e.lastname,
+    SUM(i.total)
+FROM chinook.invoices i
+LEFT JOIN chinook.customers c
+USING (customerid)
+JOIN chinook.employees e
+ON c.supportrepid = e.employeeid
+GROUP BY e.employeeid;
+
+
