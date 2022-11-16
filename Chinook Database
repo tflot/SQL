@@ -141,7 +141,7 @@ USING (mediatypeid);
 SELECT
     e.firstname,
     e.lastname,
-    SUM(i.total)
+    SUM(i.total) AS total_sales
 FROM chinook.invoices i
 LEFT JOIN chinook.customers c
 USING (customerid)
@@ -154,11 +154,14 @@ GROUP BY e.employeeid;
 SELECT
     e.firstname,
     e.lastname,
-    SUM(i.total)
+    SUM(i.total) AS total_sales
 FROM chinook.invoices i
 LEFT JOIN chinook.customers c
 USING (customerid)
 JOIN chinook.employees e
 ON c.supportrepid = e.employeeid
 WHERE i.invoicedate BETWEEN '2009-01-01' AND '2009-12-31'
-GROUP BY e.employeeid;
+GROUP BY e.employeeid
+ORDER BY total_sales DESC
+LIMIT 1;
+
