@@ -72,7 +72,7 @@ ORDER BY e.employeeid;
 /* Show the Invoice Total, Customer name, Country, and Sales Agent name for all invoices and customers. */
 
 SELECT
-    i.total,
+    i.total AS invoice_total,
     c.firstname,
     c.lastname,
     c.country,
@@ -83,3 +83,19 @@ LEFT JOIN chinook.customers c
 USING (customerid)
 LEFT JOIN chinook.employees e
 ON c.supportrepid = e.employeeid;
+
+/* How many invoices were there in 2009? */
+
+SELECT
+    COUNT(invoiceid)
+FROM chinook.invoices
+WHERE invoicedate BETWEEN '2009-01-01' AND '2009-12-31';
+
+/* What are the total sales from 2009? */
+
+SELECT
+    SUM(total)
+FROM chinook.invoices
+WHERE invoicedate BETWEEN '2009-01-01' AND '2009-12-31';
+
+
