@@ -1,0 +1,18 @@
+# For this project, I used SQL to analyze the data from database Chinook that represents a digital media store and includes tables for artists,
+albums, media tracks, invoices, and customers.
+
+# The Chinook Database is made up of 11 tables: 
+
+    1) Employees: stores employees data such as employee id, last name, first name, etc. It also has a field named ReportsTo to specify
+       who reports to whom.
+    2) Customers: stores customers data. The line between employees.Employeeid and customers.SupportRepID shows how the two tables are 
+       related (ie, how you would JOIN them).
+    3) Invoices: stores invoice header data (Customer ID, Billing Address, etc).
+    4) Invoice_items: stores the invoice line items data (Unit Price, Quantity).
+    5) Artists: stores artists data.
+    6) Albums: stores data about a list of tracks. Each album belongs to one artist. However, one artist may have multiple albums.
+    7) Media_types: table stores media types such as MPEG audio and AAC audio files.
+    8) Genres: stores music types such as rock, jazz, metal, etc.
+    9) Tracks: stores the data of songs. Each track belongs to one album.
+    10) Playlists: store data about playlists. Each playlist contains a list of tracks. Each track may belong to multiple playlists.
+    11) Playlist_track: The relationship between the playlists table and tracks table is many-to-many. This table is used to reflect this relationship.
