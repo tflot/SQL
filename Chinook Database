@@ -240,3 +240,23 @@ JOIN chinook.invoices i
 USING (customerid)
 WHERE c.country = 'Germany'
 AND i.invoicedate BETWEEN '2009-01-01' AND '2009-01-31';
+
+#20. /* Which customers bought a track with the word 'Blue' in the title? */
+
+SELECT
+    c.firstname,
+    c.lastname,
+    c.customerid,
+    t.name AS track_name
+FROM chinook.customers c
+JOIN chinook.invoices i
+USING (customerid)
+JOIN chinook.invoice_items ii
+USING (invoiceid)
+JOIN chinook.tracks t
+USING (trackid)
+WHERE t.name LIKE '% blue %'
+AND t.trackid IN (
+    SELECT
+        ii.trackid
+    FROM chinook.invoice_items);
