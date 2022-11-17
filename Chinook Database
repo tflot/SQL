@@ -224,3 +224,19 @@ WHERE invoiceid IN (
     FROM chinook.invoices
     WHERE invoicedate BETWEEN '2009-10-01' AND '2009-12-31'
     );
+    
+#19. Which customers from Germany have an invoice from January of 2009? 
+
+SELECT
+    c.firstname,
+    c.lastname,
+    c.country,
+    c.customerid,
+    i.invoiceid,
+    i.invoicedate,
+    i.total
+FROM chinook.customers c
+JOIN chinook.invoices i
+USING (customerid)
+WHERE c.country = 'Germany'
+AND i.invoicedate BETWEEN '2009-01-01' AND '2009-01-31';
